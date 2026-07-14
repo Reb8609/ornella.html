@@ -279,7 +279,7 @@
                         <div class="absolute top-4 right-4 bg-brandPink text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full z-10" data-i18n="acad_bestseller">Più Richiesto</div>
                         
                         <!-- IMMAGINE VERIFICATA E GARANTITA! -->
-                        <div class="h-48 w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1629363447953-b1d6216a9c4b?auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="h-48 w-full bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/3951883/pexels-photo-3951883.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
                         
                         <div class="p-8 flex-grow flex flex-col">
                             <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2">Corso Pratico</span>
@@ -328,7 +328,7 @@
                     
                     <!-- FOTO CIGLIA PERFETTA (Garantita) -->
                     <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-lightPink">
-                        <img src="https://images.unsplash.com/photo-1629363447953-b1d6216a9c4b?auto=format&fit=crop&w=800&q=80" alt="Lashes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.pexels.com/photos/3951883/pexels-photo-3951883.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Lashes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-darkText/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <h3 data-i18n="port_img2" class="text-2xl font-serif text-white tracking-widest uppercase">Lashes</h3>
                         </div>
@@ -626,8 +626,7 @@
                 const iconObj = document.querySelector('#mobile-menu-btn i');
                 if (menuObj && !menuObj.classList.contains('hidden')) {
                     menuObj.classList.add('hidden');
-                    iconObj.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
-                    iconObj.classList.add('fa-bars');
+                    iconObj.className = 'fa-solid fa-bars text-2xl';
                 }
             }
 
@@ -638,16 +637,13 @@
             const menu = document.getElementById('mobile-menu');
             
             if(btn && menu) {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
+                btn.addEventListener('click', () => {
                     menu.classList.toggle('hidden');
                     const icon = btn.querySelector('i');
                     if(menu.classList.contains('hidden')) {
-                        icon.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
-                        icon.classList.add('fa-bars');
+                        icon.className = 'fa-solid fa-bars text-2xl';
                     } else {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-xmark', 'text-brandPink', 'rotate-90');
+                        icon.className = 'fa-solid fa-xmark text-2xl text-brandPink rotate-90';
                     }
                 });
             }
@@ -658,8 +654,7 @@
                     const iconObj = document.querySelector('#mobile-menu-btn i');
                     if (menuObj && !menuObj.classList.contains('hidden')) {
                         menuObj.classList.add('hidden');
-                        iconObj.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
-                        iconObj.classList.add('fa-bars');
+                        iconObj.className = 'fa-solid fa-bars text-2xl';
                     }
                 });
             });
