@@ -279,7 +279,7 @@
                         <div class="absolute top-4 right-4 bg-brandPink text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full z-10" data-i18n="acad_bestseller">Più Richiesto</div>
                         
                         <!-- IMMAGINE VERIFICATA E GARANTITA! -->
-                        <div class="h-48 w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1587770513813-a4c330df3200?auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="h-48 w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1629363447953-b1d6216a9c4b?auto=format&fit=crop&w=600&q=80');"></div>
                         
                         <div class="p-8 flex-grow flex flex-col">
                             <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2">Corso Pratico</span>
@@ -328,7 +328,7 @@
                     
                     <!-- FOTO CIGLIA PERFETTA (Garantita) -->
                     <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-lightPink">
-                        <img src="https://images.unsplash.com/photo-1587770513813-a4c330df3200?auto=format&fit=crop&w=800&q=80" alt="Lashes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1629363447953-b1d6216a9c4b?auto=format&fit=crop&w=800&q=80" alt="Lashes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-darkText/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <h3 data-i18n="port_img2" class="text-2xl font-serif text-white tracking-widest uppercase">Lashes</h3>
                         </div>
@@ -336,7 +336,7 @@
                     
                     <!-- FOTO MAKE UP PERFETTA (Pennelli e palette) -->
                     <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-lightPink">
-                        <img src="https://images.unsplash.com/photo-1516975080661-46bfa20224b1?auto=format&fit=crop&w=800&q=80" alt="Makeup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1512496015851-a1dc8ca91207?auto=format&fit=crop&w=800&q=80" alt="Makeup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-darkText/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <h3 data-i18n="port_img3" class="text-2xl font-serif text-white tracking-widest uppercase">Make-up</h3>
                         </div>
@@ -626,7 +626,8 @@
                 const iconObj = document.querySelector('#mobile-menu-btn i');
                 if (menuObj && !menuObj.classList.contains('hidden')) {
                     menuObj.classList.add('hidden');
-                    iconObj.className = 'fa-solid fa-bars text-2xl'; // Reset forzato classe
+                    iconObj.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
+                    iconObj.classList.add('fa-bars');
                 }
             }
 
@@ -637,13 +638,16 @@
             const menu = document.getElementById('mobile-menu');
             
             if(btn && menu) {
-                btn.addEventListener('click', () => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     menu.classList.toggle('hidden');
                     const icon = btn.querySelector('i');
                     if(menu.classList.contains('hidden')) {
-                        icon.className = 'fa-solid fa-bars text-2xl';
+                        icon.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
+                        icon.classList.add('fa-bars');
                     } else {
-                        icon.className = 'fa-solid fa-xmark text-2xl text-brandPink rotate-90';
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-xmark', 'text-brandPink', 'rotate-90');
                     }
                 });
             }
@@ -654,7 +658,8 @@
                     const iconObj = document.querySelector('#mobile-menu-btn i');
                     if (menuObj && !menuObj.classList.contains('hidden')) {
                         menuObj.classList.add('hidden');
-                        iconObj.className = 'fa-solid fa-bars text-2xl';
+                        iconObj.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
+                        iconObj.classList.add('fa-bars');
                     }
                 });
             });
