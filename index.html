@@ -76,7 +76,8 @@
             box-sizing: border-box;
             padding-bottom: env(safe-area-inset-bottom, 1rem); 
         }
-        .footer-socials a { color: #1a1a1a; font-size: 1.2rem; margin-left: 1rem; transition: color 0.3s; }
+        /* Area di clic allargata per iPad */
+        .footer-socials a { color: #1a1a1a; font-size: 1.4rem; margin-left: 1rem; padding: 0.5rem; transition: color 0.3s; display: inline-block; }
         .footer-socials a:hover { color: #D98CB3; }
 
         .hero-overlay {
@@ -126,13 +127,15 @@
                 <a href="#services" data-i18n="menu_services" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Trattamenti</a>
                 <a href="#academy" data-i18n="menu_academy" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Academy & Corsi</a>
                 <a href="#portfolio" data-i18n="menu_portfolio" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Portfolio</a>
+                
+                <!-- AGGIUNTO ANCORA PER PRENOTAZIONI NEL MENU -->
+                <a href="#booking" data-i18n="menu_book" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Prenota Ora</a>
+                
                 <a href="#contact" data-i18n="menu_contact" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Dove Siamo</a>
                 
                 <button onclick="openOfferPopup()" data-i18n="menu_offer" class="w-full block px-3 py-4 text-sm font-medium text-brandPink uppercase tracking-widest transition mt-2 border border-brandPink rounded">
                     <i class="fa-solid fa-gift mr-2"></i> Locandina Sconto
                 </button>
-
-                <a href="#booking" data-i18n="menu_book" class="block px-3 py-4 text-sm font-medium text-lightPink bg-darkText hover:bg-gray-800 uppercase tracking-widest rounded transition shadow-md mt-4">Prenota Ora</a>
             </div>
         </div>
     </nav>
@@ -143,7 +146,6 @@
         <section id="home" class="page-section active">
             <div class="relative w-full h-full min-h-[calc(100vh-5rem)] flex items-center py-20 lg:py-32">
                 <div class="absolute inset-0 w-full h-full">
-                    <!-- FOTO HOME: Smalto Semipermanente -->
                     <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=2000&q=80" alt="Home Background" class="w-full h-full object-cover" />
                     <div class="absolute inset-0 hero-overlay"></div>
                 </div>
@@ -251,8 +253,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Corso 1 (Make-up) -->
                     <div class="course-card bg-[#1f1f1f] rounded-xl overflow-hidden border border-gray-800 flex flex-col transition hover:border-brandPink">
-                        <!-- FOTO MAKEUP -->
-                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1512496015851-a1dc8ca91207?auto=format&fit=crop&w=800&q=80');"></div>
+                        <!-- FOTO MAKEUP ESTTRATTA DA PEXELS -->
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/36769744/pexels-photo-36769744.jpeg?auto=compress&cs=tinysrgb&w=800');"></div>
                         <div class="p-8 flex-grow flex flex-col">
                             <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2">Individuale</span>
                             <h3 data-i18n="crs1_title" class="text-2xl font-serif text-white mb-3">Self Make-Up</h3>
@@ -263,8 +265,8 @@
 
                     <!-- Corso 2 (Ciglia) -->
                     <div class="course-card bg-[#1f1f1f] rounded-xl overflow-hidden border border-gray-800 flex flex-col transition hover:border-brandPink">
-                        <!-- FOTO CIGLIA RAVVICINATA -->
-                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1583001931096-959e9a1a6223?auto=format&fit=crop&w=800&q=80');"></div>
+                        <!-- FOTO CIGLIA RAVVICINATA ESTRATTA DA PEXELS -->
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/31261686/pexels-photo-31261686.jpeg?auto=compress&cs=tinysrgb&w=800');"></div>
                         <div class="p-8 flex-grow flex flex-col">
                             <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2">Corso Pratico</span>
                             <h3 data-i18n="crs2_title" class="text-2xl font-serif text-white mb-3">Extension Ciglia (One to One)</h3>
@@ -275,7 +277,7 @@
 
                     <!-- Corso 3 (Smalto) -->
                     <div class="course-card bg-[#1f1f1f] rounded-xl overflow-hidden border border-gray-800 flex flex-col transition hover:border-brandPink">
-                        <!-- FOTO UNGHIE (Stessa della Home per coerenza estetica) -->
+                        <!-- FOTO UNGHIE -->
                         <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=80');"></div>
                         <div class="p-8 flex-grow flex flex-col">
                             <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2">Corso Pratico</span>
@@ -303,17 +305,17 @@
                         </div>
                     </div>
                     
-                    <!-- FOTO CIGLIA RAVVICINATA -->
+                    <!-- FOTO CIGLIA RAVVICINATA DA PEXELS -->
                     <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-[#1f1f1f]">
-                        <img src="https://images.unsplash.com/photo-1583001931096-959e9a1a6223?auto=format&fit=crop&w=800&q=80" alt="Lashes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.pexels.com/photos/31261686/pexels-photo-31261686.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Lashes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-bgDark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <h3 data-i18n="port_img2" class="text-2xl font-serif text-brandPink tracking-widest uppercase">Lashes</h3>
                         </div>
                     </div>
                     
-                    <!-- FOTO MAKEUP -->
+                    <!-- FOTO MAKEUP DA PEXELS -->
                     <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-[#1f1f1f]">
-                        <img src="https://images.unsplash.com/photo-1512496015851-a1dc8ca91207?auto=format&fit=crop&w=800&q=80" alt="Makeup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.pexels.com/photos/36769744/pexels-photo-36769744.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Makeup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-bgDark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <h3 data-i18n="port_img3" class="text-2xl font-serif text-brandPink tracking-widest uppercase">Make-up</h3>
                         </div>
@@ -322,7 +324,81 @@
             </div>
         </section>
 
-        <!-- DOVE SIAMO & PRENOTAZIONI -->
+        <!-- SEZIONE RIPRISTINATA: PRENOTA & CALENDARIO INTERATTIVO -->
+        <section id="booking" class="page-section py-20 min-h-[calc(100vh-5rem)]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-[#1f1f1f] p-8 md:p-12 rounded-2xl shadow-xl border border-gray-800">
+                    <div class="text-center mb-10">
+                        <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2 block border border-brandPink inline-block px-3 py-1 rounded">Si riceve solo su appuntamento</span>
+                        <h2 data-i18n="book_title" class="text-3xl font-serif text-white mb-4 mt-4">Prenota il tuo Trattamento</h2>
+                        <p data-i18n="book_p" class="text-gray-400 font-light">Seleziona data e ora preferita dal nostro sistema intelligente.</p>
+                    </div>
+
+                    <!-- CALENDARIO VISIVO -->
+                    <div class="bg-[#121212] rounded-xl p-6 shadow-sm border border-gray-800 mb-8 max-w-md mx-auto">
+                        <div class="flex justify-between items-center mb-6">
+                            <button class="text-gray-400 hover:text-brandPink transition"><i class="fa-solid fa-chevron-left"></i></button>
+                            <span class="font-medium text-white uppercase tracking-widest text-sm">Novembre 2026</span>
+                            <button class="text-gray-400 hover:text-brandPink transition"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                        
+                        <div class="grid grid-cols-7 gap-2 text-center mb-6">
+                            <div class="text-xs text-gray-500 font-semibold">LUN</div>
+                            <div class="text-xs text-gray-500 font-semibold">MAR</div>
+                            <div class="text-xs text-gray-500 font-semibold">MER</div>
+                            <div class="text-xs text-gray-500 font-semibold">GIO</div>
+                            <div class="text-xs text-gray-500 font-semibold">VEN</div>
+                            <div class="text-xs text-gray-500 font-semibold">SAB</div>
+                            <div class="text-xs text-brandPink font-semibold">DOM</div>
+                            
+                            <div class="py-2 text-gray-600 text-sm">26</div>
+                            <div class="py-2 text-gray-600 text-sm">27</div>
+                            <div class="py-2 text-gray-600 text-sm">28</div>
+                            <div class="py-2 text-gray-600 text-sm">29</div>
+                            <div class="py-2 text-gray-600 text-sm">30</div>
+                            <div class="py-2 text-gray-600 text-sm">31</div>
+                            <div class="py-2 text-brandPink/30 text-sm">1</div>
+                            
+                            <div class="py-2 text-gray-300 hover:bg-[#1f1f1f] hover:text-brandPink rounded cursor-pointer transition text-sm">2</div>
+                            <div class="py-2 bg-brandPink text-white rounded cursor-pointer shadow-md text-sm font-medium transform scale-110">3</div>
+                            <div class="py-2 text-gray-300 hover:bg-[#1f1f1f] hover:text-brandPink rounded cursor-pointer transition text-sm">4</div>
+                            <div class="py-2 text-gray-300 hover:bg-[#1f1f1f] hover:text-brandPink rounded cursor-pointer transition text-sm">5</div>
+                            <div class="py-2 text-gray-300 hover:bg-[#1f1f1f] hover:text-brandPink rounded cursor-pointer transition text-sm">6</div>
+                            <div class="py-2 text-gray-300 hover:bg-[#1f1f1f] hover:text-brandPink rounded cursor-pointer transition text-sm">7</div>
+                            <div class="py-2 text-brandPink/30 text-sm">8</div>
+                        </div>
+
+                        <div class="border-t border-gray-800 pt-6">
+                            <span data-i18n="book_avail" class="block text-xs text-gray-500 mb-3 uppercase tracking-wider font-semibold">Orari Disponibili (3 Nov)</span>
+                            <div class="flex flex-wrap gap-2 justify-center">
+                                <button class="px-3 py-1.5 border border-gray-700 bg-[#1f1f1f] text-xs text-gray-300 rounded hover:border-brandPink hover:text-brandPink transition">10:00</button>
+                                <button class="px-3 py-1.5 border border-brandPink bg-brandPink text-xs text-white rounded font-medium shadow-sm">11:30</button>
+                                <button class="px-3 py-1.5 border border-gray-700 bg-[#1f1f1f] text-xs text-gray-300 rounded hover:border-brandPink hover:text-brandPink transition">15:00</button>
+                                <button class="px-3 py-1.5 border border-gray-700 bg-[#1f1f1f] text-xs text-gray-300 rounded hover:border-brandPink hover:text-brandPink transition">17:00</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center flex flex-col items-center">
+                        <a href="javascript:void(0)" data-i18n="btn_confirm" class="block w-full max-w-md mx-auto bg-brandPink text-white py-4 rounded-full text-sm uppercase tracking-widest hover:bg-[#c2769c] transition font-medium shadow-lg mb-6 text-center">
+                            Richiedi Appuntamento
+                        </a>
+
+                        <div class="w-full flex items-center justify-center mb-6 max-w-sm">
+                            <div class="h-px bg-gray-700 flex-1"></div>
+                            <span data-i18n="book_or" class="px-4 text-xs text-gray-500 uppercase tracking-widest font-medium">Oppure prenota via chat</span>
+                            <div class="h-px bg-gray-700 flex-1"></div>
+                        </div>
+                        
+                        <a href="https://wa.me/393333463270" target="_blank" rel="noopener noreferrer" class="w-full max-w-md bg-[#25D366] text-white py-4 rounded-full text-sm font-bold tracking-wide hover:bg-[#20b858] transition flex items-center justify-center shadow-md">
+                            <i class="fa-brands fa-whatsapp text-xl mr-3"></i> <span data-i18n="btn_wa">Messaggio WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOVE SIAMO -->
         <section id="contact" class="page-section min-h-[calc(100vh-5rem)] flex flex-col justify-between">
             <div class="py-20 flex-grow flex items-center">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -415,6 +491,7 @@
                 'crs2_title': 'Extension Ciglia (One to One)', 'crs2_p': 'Max 2 partecipanti. Teoria, pratica su modella e kit in dotazione incluso nel prezzo. Rilascio Attestato.',
                 'crs3_title': 'Smalto Semipermanente', 'crs3_p': 'Max 2 partecipanti. Impara a preparare l\'unghia e stendere perfettamente il colore in modo duraturo.',
                 'port_tag': 'Portfolio Lavori', 'port_title': 'Le Nostre <span class="text-brandPink italic">Creazioni</span>', 'port_img1': 'Nail Art', 'port_img2': 'Lashes', 'port_img3': 'Make-up',
+                'book_title': 'Prenota il tuo Trattamento', 'book_p': 'Seleziona data e ora preferita dal nostro sistema intelligente.', 'book_avail': 'Orari Disponibili (3 Nov)', 'btn_confirm': 'Richiedi Appuntamento', 'book_or': 'Oppure prenota via chat', 'btn_wa': 'Messaggio WhatsApp',
                 'contact_title': 'Vieni a trovarci', 'contact_p': 'Gli orari indicati potrebbero subire variazioni.', 'cont_addr': 'INDIRIZZO', 'cont_map': 'Apri Mappa Completa', 'cont_hours': 'ORARI',
                 'day_1': 'Lunedì', 'day_2_3': 'Mar - Mer', 'day_4_5': 'Gio - Ven', 'day_6': 'Sabato', 'day_7': 'Domenica', 'closed': 'Chiuso',
                 'pop_tag': 'Promo Esclusiva', 'pop_title': 'Vieni a Scoprirci!', 'pop_p': 'Mostra questo coupon in negozio per ricevere un trattamento speciale al tuo primo appuntamento.', 'pop_old': 'Di Sconto Benvenuto', 'pop_btn': 'Richiedi Sconto via WhatsApp'
@@ -432,6 +509,7 @@
                 'crs2_title': 'Eyelash Extension (One to One)', 'crs2_p': 'Max 2 participants. Theory, practice on a model, and included kit. Certificate issuance.',
                 'crs3_title': 'Semi-Permanent Polish', 'crs3_p': 'Max 2 participants. Learn how to prepare the nail and apply color perfectly and lastingly.',
                 'port_tag': 'Work Portfolio', 'port_title': 'Our <span class="text-brandPink italic">Creations</span>', 'port_img1': 'Nail Art', 'port_img2': 'Lashes', 'port_img3': 'Make-up',
+                'book_title': 'Book Your Treatment', 'book_p': 'Select your preferred date and time from our smart system.', 'book_avail': 'Available Times (Nov 3)', 'btn_confirm': 'Request Appointment', 'book_or': 'Or book via chat', 'btn_wa': 'WhatsApp Message',
                 'contact_title': 'Come visit us', 'contact_p': 'The indicated times may vary.', 'cont_addr': 'ADDRESS', 'cont_map': 'Open Full Map', 'cont_hours': 'HOURS',
                 'day_1': 'Monday', 'day_2_3': 'Tue - Wed', 'day_4_5': 'Thu - Fri', 'day_6': 'Saturday', 'day_7': 'Sunday', 'closed': 'Closed',
                 'pop_tag': 'Exclusive Promo', 'pop_title': 'Come Discover Us!', 'pop_p': 'Show this coupon in the store to receive a special treatment at your first appointment.', 'pop_old': 'Welcome Discount', 'pop_btn': 'Claim Discount via WhatsApp'
