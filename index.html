@@ -531,33 +531,59 @@
             }
         };
 
-        function toggleLangMenu(event) {
-            if(event) event.stopPropagation();
-            const dd = document.getElementById('lang-dropdown');
-            dd.classList.toggle('hidden');
-        }
-
-        function toggleMobileMenu(event) {
-            if(event) event.stopPropagation();
+        // --- NUOVA LOGICA MENU BLINDATA ---
+        function closeMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const icon = document.querySelector('#mobile-menu-btn i');
-            menu.classList.toggle('hidden');
-            if(menu.classList.contains('hidden')) {
+            if (menu && !menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
                 if (icon) {
                     icon.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
                     icon.classList.add('fa-bars');
                 }
-            } else {
+            }
+        }
+
+        function toggleMobileMenu(event) {
+            if(event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.querySelector('#mobile-menu-btn i');
+            
+            if(menu.classList.contains('hidden')) {
+                // APRI
+                menu.classList.remove('hidden');
                 if (icon) {
                     icon.classList.remove('fa-bars');
                     icon.classList.add('fa-xmark', 'text-brandPink', 'rotate-90');
                 }
+            } else {
+                // CHIUDI
+                closeMobileMenu();
             }
+        }
+
+        function closeLangMenu() {
+            const dd = document.getElementById('lang-dropdown');
+            if (dd && !dd.classList.contains('hidden')) {
+                dd.classList.add('hidden');
+            }
+        }
+
+        function toggleLangMenu(event) {
+            if(event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            const dd = document.getElementById('lang-dropdown');
+            dd.classList.toggle('hidden');
         }
 
         function changeLang(lang) {
             document.getElementById('current-lang').innerText = lang;
-            document.getElementById('lang-dropdown').classList.add('hidden');
+            closeLangMenu();
             
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
@@ -572,25 +598,18 @@
             }
         }
 
+        // Chiusura globale se si clicca fuori
         document.addEventListener('click', function(e) {
-            // Chiudi lingua se si clicca fuori
             const langContainer = document.getElementById('lang-container');
-            const langDropdown = document.getElementById('lang-dropdown');
             if (langContainer && !langContainer.contains(e.target)) {
-                langDropdown.classList.add('hidden');
+                closeLangMenu();
             }
 
-            // Chiudi menu mobile se si clicca fuori
             const mobileMenu = document.getElementById('mobile-menu');
             const menuBtn = document.getElementById('mobile-menu-btn');
             if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-                    mobileMenu.classList.add('hidden');
-                    const iconObj = document.querySelector('#mobile-menu-btn i');
-                    if (iconObj) {
-                        iconObj.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
-                        iconObj.classList.add('fa-bars');
-                    }
+                if (!mobileMenu.contains(e.target) && menuBtn && !menuBtn.contains(e.target)) {
+                    closeMobileMenu();
                 }
             }
         });
@@ -599,15 +618,7 @@
             const popup = document.getElementById('offer-popup');
             const popupContent = document.getElementById('popup-content');
             
-            const menu = document.getElementById('mobile-menu');
-            if (menu && !menu.classList.contains('hidden')) {
-                menu.classList.add('hidden');
-                const iconObj = document.querySelector('#mobile-menu-btn i');
-                if (iconObj) {
-                    iconObj.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
-                    iconObj.classList.add('fa-bars');
-                }
-            }
+            closeMobileMenu(); // Chiude il menù se aperto
 
             popup.classList.remove('opacity-0', 'invisible');
             popupContent.classList.remove('scale-95');
@@ -643,15 +654,7 @@
                     window.scrollTo(0, 0);
                 }
 
-                const menuObj = document.getElementById('mobile-menu');
-                const iconObj = document.querySelector('#mobile-menu-btn i');
-                if (menuObj && !menuObj.classList.contains('hidden')) {
-                    menuObj.classList.add('hidden');
-                    if (iconObj) {
-                        iconObj.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
-                        iconObj.classList.add('fa-bars');
-                    }
-                }
+                closeMobileMenu(); // Chiude il menù in modo pulito
             }
 
             window.addEventListener('hashchange', navigateToHash);
@@ -659,15 +662,7 @@
 
             document.querySelectorAll('#mobile-menu a').forEach(link => {
                 link.addEventListener('click', () => {
-                    const menuObj = document.getElementById('mobile-menu');
-                    const iconObj = document.querySelector('#mobile-menu-btn i');
-                    if (menuObj && !menuObj.classList.contains('hidden')) {
-                        menuObj.classList.add('hidden');
-                        if (iconObj) {
-                            iconObj.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
-                            iconObj.classList.add('fa-bars');
-                        }
-                    }
+                    closeMobileMenu(); // Chiude il menù in modo pulito
                 });
             });
 
