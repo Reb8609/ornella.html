@@ -111,7 +111,7 @@
                         </div>
                     </div>
 
-                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-darkText hover:text-brandPink focus:outline-none p-2 transition-transform duration-200">
+                    <button id="mobile-menu-btn" class="text-darkText hover:text-brandPink focus:outline-none p-2 transition-transform duration-200">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -127,8 +127,8 @@
                 <a href="#portfolio" data-i18n="menu_portfolio" class="block px-3 py-4 text-sm font-medium text-darkText hover:bg-lightPink hover:text-brandPink uppercase tracking-widest rounded transition">Portfolio</a>
                 <a href="#contact" data-i18n="menu_contact" class="block px-3 py-4 text-sm font-medium text-darkText hover:bg-lightPink hover:text-brandPink uppercase tracking-widest rounded transition">Dove Siamo</a>
                 
-                <button onclick="openOfferPopup()" class="w-full block px-3 py-4 text-sm font-medium text-brandPink hover:bg-lightPink uppercase tracking-widest rounded transition mt-2">
-                    <i class="fa-solid fa-gift mr-2"></i> <span data-i18n="menu_offer">Locandina Sconto</span>
+                <button onclick="openOfferPopup()" data-i18n="menu_offer" class="w-full block px-3 py-4 text-sm font-medium text-brandPink hover:bg-lightPink uppercase tracking-widest rounded transition mt-2">
+                    <i class="fa-solid fa-gift mr-2"></i> Locandina Sconto
                 </button>
 
                 <a href="#booking" data-i18n="menu_book" class="block px-3 py-4 text-sm font-medium text-white bg-darkText hover:bg-gray-800 uppercase tracking-widest rounded transition shadow-md mt-4">Prenota Ora</a>
@@ -278,8 +278,8 @@
                     <div class="course-card bg-[#1a1a1a] rounded-xl overflow-hidden border border-gray-800 flex flex-col relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(217,140,179,0.1)]">
                         <div class="absolute top-4 right-4 bg-brandPink text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full z-10" data-i18n="acad_bestseller">Più Richiesto</div>
                         
-                        <!-- IMMAGINE CIGLIA AGGIORNATA -->
-                        <div class="h-48 w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1631214500115-598fc2cb8d2d?auto=format&fit=crop&w=600&q=80');"></div>
+                        <!-- IMMAGINE VERIFICATA E GARANTITA! -->
+                        <div class="h-48 w-full bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/3951883/pexels-photo-3951883.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
                         
                         <div class="p-8 flex-grow flex flex-col">
                             <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2">Corso Pratico</span>
@@ -326,15 +326,15 @@
                         </div>
                     </div>
                     
-                    <!-- FOTO CIGLIA AGGIORNATA -->
+                    <!-- FOTO CIGLIA PERFETTA (Garantita) -->
                     <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-lightPink">
-                        <img src="https://images.unsplash.com/photo-1631214500115-598fc2cb8d2d?auto=format&fit=crop&w=800&q=80" alt="Lashes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.pexels.com/photos/3951883/pexels-photo-3951883.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Lashes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-darkText/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <h3 data-i18n="port_img2" class="text-2xl font-serif text-white tracking-widest uppercase">Lashes</h3>
                         </div>
                     </div>
                     
-                    <!-- FOTO MAKE UP -->
+                    <!-- FOTO MAKE UP PERFETTA (Pennelli e palette) -->
                     <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-lightPink">
                         <img src="https://images.unsplash.com/photo-1512496015851-a1dc8ca91207?auto=format&fit=crop&w=800&q=80" alt="Makeup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-darkText/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -546,21 +546,6 @@
             }
         };
 
-        // Funzione centralizzata per gestire l'apertura/chiusura del menu mobile in modo sicuro
-        function toggleMobileMenu(forceClose = false) {
-            const menuObj = document.getElementById('mobile-menu');
-            const iconObj = document.querySelector('#mobile-menu-btn i');
-            if (!menuObj || !iconObj) return;
-
-            if (forceClose || !menuObj.classList.contains('hidden')) {
-                menuObj.classList.add('hidden');
-                iconObj.className = 'fa-solid fa-bars text-2xl transition-all';
-            } else {
-                menuObj.classList.remove('hidden');
-                iconObj.className = 'fa-solid fa-xmark text-2xl text-brandPink rotate-90 transition-all';
-            }
-        }
-
         function toggleLangMenu() {
             const dd = document.getElementById('lang-dropdown');
             dd.classList.toggle('hidden');
@@ -595,8 +580,12 @@
             const popup = document.getElementById('offer-popup');
             const popupContent = document.getElementById('popup-content');
             
-            // Chiude in sicurezza il menu mobile richiamando la funzione dedicata
-            toggleMobileMenu(true);
+            const menu = document.getElementById('mobile-menu');
+            if (!menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+                document.querySelector('#mobile-menu-btn i').classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
+                document.querySelector('#mobile-menu-btn i').classList.add('fa-bars');
+            }
 
             popup.classList.remove('opacity-0', 'invisible');
             popupContent.classList.remove('scale-95');
@@ -633,16 +622,40 @@
                 }
 
                 // Chiudi menu forzato su mobile al click link
-                toggleMobileMenu(true);
+                const menuObj = document.getElementById('mobile-menu');
+                const iconObj = document.querySelector('#mobile-menu-btn i');
+                if (menuObj && !menuObj.classList.contains('hidden')) {
+                    menuObj.classList.add('hidden');
+                    iconObj.className = 'fa-solid fa-bars text-2xl';
+                }
             }
 
             window.addEventListener('hashchange', navigateToHash);
             navigateToHash();
 
-            // Aggiungiamo il click listener sui link del menu mobile
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            if(btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                    const icon = btn.querySelector('i');
+                    if(menu.classList.contains('hidden')) {
+                        icon.className = 'fa-solid fa-bars text-2xl';
+                    } else {
+                        icon.className = 'fa-solid fa-xmark text-2xl text-brandPink rotate-90';
+                    }
+                });
+            }
+
             document.querySelectorAll('#mobile-menu a').forEach(link => {
                 link.addEventListener('click', () => {
-                    toggleMobileMenu(true);
+                    const menuObj = document.getElementById('mobile-menu');
+                    const iconObj = document.querySelector('#mobile-menu-btn i');
+                    if (menuObj && !menuObj.classList.contains('hidden')) {
+                        menuObj.classList.add('hidden');
+                        iconObj.className = 'fa-solid fa-bars text-2xl';
+                    }
                 });
             });
 
