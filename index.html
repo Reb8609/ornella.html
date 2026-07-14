@@ -98,7 +98,7 @@
                 <div class="flex items-center space-x-6">
                     
                     <div class="relative group" id="lang-container">
-                        <button onclick="toggleLangMenu()" class="flex items-center text-darkText hover:text-brandPink transition p-2 focus:outline-none">
+                        <button onclick="toggleLangMenu(event)" class="flex items-center text-darkText hover:text-brandPink transition p-2 focus:outline-none">
                             <i class="fa-solid fa-globe mr-2 text-lg"></i>
                             <span id="current-lang" class="font-medium text-sm">IT</span>
                         </button>
@@ -113,7 +113,7 @@
                         </div>
                     </div>
 
-                    <button id="mobile-menu-btn" class="text-darkText hover:text-brandPink focus:outline-none p-2 transition-transform duration-200">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu(event)" class="text-darkText hover:text-brandPink focus:outline-none p-2 transition-transform duration-200">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -127,10 +127,7 @@
                 <a href="#services" data-i18n="menu_services" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Trattamenti</a>
                 <a href="#academy" data-i18n="menu_academy" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Academy & Corsi</a>
                 <a href="#portfolio" data-i18n="menu_portfolio" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Portfolio</a>
-                
-                <!-- AGGIUNTO ANCORA PER PRENOTAZIONI NEL MENU -->
                 <a href="#booking" data-i18n="menu_book" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Prenota Ora</a>
-                
                 <a href="#contact" data-i18n="menu_contact" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Dove Siamo</a>
                 
                 <button onclick="openOfferPopup()" data-i18n="menu_offer" class="w-full block px-3 py-4 text-sm font-medium text-brandPink uppercase tracking-widest transition mt-2 border border-brandPink rounded">
@@ -259,7 +256,8 @@
                             <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2">Individuale</span>
                             <h3 data-i18n="crs1_title" class="text-2xl font-serif text-white mb-3">Self Make-Up</h3>
                             <p data-i18n="crs1_p" class="text-gray-400 text-sm font-light mb-6 flex-grow">"Il viso è una tela dove poter creare un dipinto". Impara le tecniche per un trucco giornaliero, veloce e pratico.</p>
-                            <a href="https://wa.me/393333463270" target="_blank" rel="noopener noreferrer" class="block w-full py-3 border border-brandPink text-brandPink text-center rounded hover:bg-brandPink hover:text-white transition uppercase text-xs tracking-widest font-semibold">Richiedi Info</a>
+                            <!-- WHATSAPP PERSONALIZZATO -->
+                            <a href="https://wa.me/393333463270?text=Salve,%20vorrei%20informazioni%20sul%20Corso%20Individuale%20di%20Self%20Make-Up!" target="_blank" rel="noopener noreferrer" class="block w-full py-3 border border-brandPink text-brandPink text-center rounded hover:bg-brandPink hover:text-white transition uppercase text-xs tracking-widest font-semibold">Richiedi Info</a>
                         </div>
                     </div>
 
@@ -271,7 +269,8 @@
                             <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2">Corso Pratico</span>
                             <h3 data-i18n="crs2_title" class="text-2xl font-serif text-white mb-3">Extension Ciglia (One to One)</h3>
                             <p data-i18n="crs2_p" class="text-gray-400 text-sm font-light mb-6 flex-grow">Max 2 partecipanti. Teoria, pratica su modella e kit in dotazione incluso nel prezzo. Rilascio Attestato.</p>
-                            <a href="https://wa.me/393333463270" target="_blank" rel="noopener noreferrer" class="block w-full py-3 bg-brandPink text-white text-center rounded hover:bg-[#c2769c] transition uppercase text-xs tracking-widest font-semibold">Iscriviti Ora</a>
+                            <!-- WHATSAPP PERSONALIZZATO -->
+                            <a href="https://wa.me/393333463270?text=Salve,%20vorrei%20iscrivermi%20al%20Corso%20Pratico%20di%20Extension%20Ciglia%20(One%20to%20One)!" target="_blank" rel="noopener noreferrer" class="block w-full py-3 bg-brandPink text-white text-center rounded hover:bg-[#c2769c] transition uppercase text-xs tracking-widest font-semibold">Iscriviti Ora</a>
                         </div>
                     </div>
 
@@ -283,7 +282,8 @@
                             <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2">Corso Pratico</span>
                             <h3 data-i18n="crs3_title" class="text-2xl font-serif text-white mb-3">Smalto Semipermanente</h3>
                             <p data-i18n="crs3_p" class="text-gray-400 text-sm font-light mb-6 flex-grow">Max 2 partecipanti. Impara a preparare l'unghia e stendere perfettamente il colore in modo duraturo.</p>
-                            <a href="https://wa.me/393333463270" target="_blank" rel="noopener noreferrer" class="block w-full py-3 border border-brandPink text-brandPink text-center rounded hover:bg-brandPink hover:text-white transition uppercase text-xs tracking-widest font-semibold">Iscriviti Ora</a>
+                            <!-- WHATSAPP PERSONALIZZATO -->
+                            <a href="https://wa.me/393333463270?text=Salve,%20vorrei%20iscrivermi%20al%20Corso%20Pratico%20di%20Smalto%20Semipermanente!" target="_blank" rel="noopener noreferrer" class="block w-full py-3 border border-brandPink text-brandPink text-center rounded hover:bg-brandPink hover:text-white transition uppercase text-xs tracking-widest font-semibold">Iscriviti Ora</a>
                         </div>
                     </div>
                 </div>
@@ -324,7 +324,7 @@
             </div>
         </section>
 
-        <!-- SEZIONE RIPRISTINATA: PRENOTA & CALENDARIO INTERATTIVO -->
+        <!-- SEZIONE PRENOTA & CALENDARIO INTERATTIVO -->
         <section id="booking" class="page-section py-20 min-h-[calc(100vh-5rem)]">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="bg-[#1f1f1f] p-8 md:p-12 rounded-2xl shadow-xl border border-gray-800">
@@ -450,12 +450,12 @@
             &copy; 2026 @ Nails & Beauty
         </div>
         <div class="footer-socials flex items-center">
-            <a href="https://www.instagram.com/nails_e_beauty_/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.instagram.com/Nails_e_beauty_ornella/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.facebook.com/search/top?q=Nails%20%26%20Beauty" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
         </div>
     </footer>
 
-    <!-- POPUP OFFERTA (Sfondo scuro, testi bianchi, bottoni rosa pastello) -->
+    <!-- POPUP OFFERTA -->
     <div id="offer-popup" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center opacity-0 invisible transition-all duration-500" style="z-index: 9999;">
         <div class="bg-bgDark rounded-2xl shadow-2xl border border-gray-700 max-w-md w-full mx-4 overflow-hidden transform scale-95 transition-transform duration-500 relative" id="popup-content">
             
@@ -516,9 +516,28 @@
             }
         };
 
-        function toggleLangMenu() {
+        function toggleLangMenu(event) {
+            if(event) event.stopPropagation();
             const dd = document.getElementById('lang-dropdown');
             dd.classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu(event) {
+            if(event) event.stopPropagation();
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.querySelector('#mobile-menu-btn i');
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                if (icon) {
+                    icon.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
+                    icon.classList.add('fa-bars');
+                }
+            } else {
+                if (icon) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark', 'text-brandPink', 'rotate-90');
+                }
+            }
         }
 
         function changeLang(lang) {
@@ -539,10 +558,25 @@
         }
 
         document.addEventListener('click', function(e) {
-            const container = document.getElementById('lang-container');
-            const dropdown = document.getElementById('lang-dropdown');
-            if (container && !container.contains(e.target)) {
-                dropdown.classList.add('hidden');
+            // Chiudi lingua se si clicca fuori
+            const langContainer = document.getElementById('lang-container');
+            const langDropdown = document.getElementById('lang-dropdown');
+            if (langContainer && !langContainer.contains(e.target)) {
+                langDropdown.classList.add('hidden');
+            }
+
+            // Chiudi menu mobile se si clicca fuori
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                    const iconObj = document.querySelector('#mobile-menu-btn i');
+                    if (iconObj) {
+                        iconObj.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
+                        iconObj.classList.add('fa-bars');
+                    }
+                }
             }
         });
 
@@ -551,7 +585,7 @@
             const popupContent = document.getElementById('popup-content');
             
             const menu = document.getElementById('mobile-menu');
-            if (!menu.classList.contains('hidden')) {
+            if (menu && !menu.classList.contains('hidden')) {
                 menu.classList.add('hidden');
                 const iconObj = document.querySelector('#mobile-menu-btn i');
                 if (iconObj) {
@@ -607,24 +641,6 @@
 
             window.addEventListener('hashchange', navigateToHash);
             navigateToHash();
-
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            
-            if(btn && menu) {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    menu.classList.toggle('hidden');
-                    const icon = btn.querySelector('i');
-                    if(menu.classList.contains('hidden')) {
-                        icon.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
-                        icon.classList.add('fa-bars');
-                    } else {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-xmark', 'text-brandPink', 'rotate-90');
-                    }
-                });
-            }
 
             document.querySelectorAll('#mobile-menu a').forEach(link => {
                 link.addEventListener('click', () => {
