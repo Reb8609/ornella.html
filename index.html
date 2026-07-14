@@ -16,10 +16,11 @@
             theme: {
                 extend: {
                     colors: {
-                        lightPastel: '#FCF3F8', /* Rosa pastello chiaro per barre, bottoni e titoli */
-                        darkBg: '#121212',      /* Grigio scuro tendente al nero per gli sfondi */
-                        cardBg: '#1a1a1a',      /* Grigio scuro per le card e popup */
-                        darkText: '#1a1a1a'     /* Testo scuro da usare SOPRA il rosa pastello */
+                        brandPink: '#D98CB3', /* Rosa Floreale Intenso */
+                        lightPink: '#FCF3F8', /* Sfondo Panna/Rosato molto chiaro */
+                        darkText: '#1a1a1a',  
+                        bgDark: '#121212',    /* Grigio scuro tendente al nero */
+                        bgDarker: '#0a0a0a'
                     },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'serif'],
@@ -32,16 +33,13 @@
 
     <style>
         body {
-            background-color: #121212; 
-            color: #ffffff;
+            background-color: #121212;
+            color: #f3f4f6;
             margin: 0; padding: 0;
-            overflow-x: hidden;
         }
         
-        /* Barra Navigazione Rosa Pastello */
         .glass-nav {
-            background: #FCF3F8;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            background: #FCF3F8; /* Barra rosa pastello */
         }
 
         .page-section {
@@ -60,17 +58,18 @@
 
         .service-card {
             transition: all 0.4s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #FCF3F8;
-            box-shadow: 0 10px 30px rgba(252, 243, 248, 0.05);
+            background-color: #1f1f1f;
+            border: 1px solid #333;
         }
 
-        /* Footer Fisso Rosa Pastello */
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #D98CB3;
+        }
+
         #fixed-footer {
             position: fixed; bottom: 0; left: 0; width: 100%;
-            background: #FCF3F8;
+            background: #FCF3F8; /* Barra rosa pastello */
             padding: 1rem 1.5rem;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000;
@@ -78,16 +77,16 @@
             padding-bottom: env(safe-area-inset-bottom, 1rem); 
         }
         .footer-socials a { color: #1a1a1a; font-size: 1.2rem; margin-left: 1rem; transition: color 0.3s; }
-        .footer-socials a:hover { color: #c2769c; }
+        .footer-socials a:hover { color: #D98CB3; }
 
         .hero-overlay {
-            background: linear-gradient(to right, rgba(18,18,18,0.95) 0%, rgba(18,18,18,0.4) 100%);
+            background: linear-gradient(to right, rgba(18,18,18,0.95) 0%, rgba(18,18,18,0.5) 100%);
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-lightPastel selection:text-darkBg">
+<body class="font-sans antialiased selection:bg-brandPink selection:text-white">
 
-    <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+    <nav class="glass-nav fixed w-full z-50 top-0 shadow-sm transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 
@@ -98,73 +97,69 @@
                 <div class="flex items-center space-x-6">
                     
                     <div class="relative group" id="lang-container">
-                        <button onclick="toggleLangMenu()" class="flex items-center text-darkText hover:opacity-70 transition p-2 focus:outline-none">
+                        <button onclick="toggleLangMenu()" class="flex items-center text-darkText hover:text-brandPink transition p-2 focus:outline-none">
                             <i class="fa-solid fa-globe mr-2 text-lg"></i>
                             <span id="current-lang" class="font-medium text-sm">IT</span>
                         </button>
                         
-                        <div id="lang-dropdown" class="absolute right-0 top-full mt-0 w-36 bg-cardBg border border-gray-800 rounded-md shadow-xl py-1 hidden z-50">
-                            <button onclick="changeLang('IT')" class="w-full text-left px-4 py-3 text-sm text-white hover:bg-lightPastel hover:text-darkBg transition flex items-center">
+                        <div id="lang-dropdown" class="absolute right-0 top-full mt-0 w-36 bg-white rounded-md shadow-xl py-1 hidden border border-gray-100 z-50">
+                            <button onclick="changeLang('IT')" class="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-lightPink hover:text-brandPink flex items-center">
                                 <span class="mr-3 text-lg">🇮🇹</span> Italiano
                             </button>
-                            <button onclick="changeLang('EN')" class="w-full text-left px-4 py-3 text-sm text-white hover:bg-lightPastel hover:text-darkBg transition flex items-center border-t border-gray-800">
+                            <button onclick="changeLang('EN')" class="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-lightPink hover:text-brandPink flex items-center border-t border-gray-50">
                                 <span class="mr-3 text-lg">🇬🇧</span> English
                             </button>
                         </div>
                     </div>
 
-                    <button id="mobile-menu-btn" class="text-darkText hover:opacity-70 focus:outline-none p-2 transition-transform duration-200">
+                    <button id="mobile-menu-btn" class="text-darkText hover:text-brandPink focus:outline-none p-2 transition-transform duration-200">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Menu a tendina per dispositivi mobili -->
-        <div id="mobile-menu" class="hidden bg-lightPastel border-t border-gray-300 absolute w-full shadow-2xl origin-top transition-all duration-300 z-40">
+        <div id="mobile-menu" class="hidden bg-lightPink border-t border-gray-200 absolute w-full shadow-2xl origin-top transition-all duration-300 z-40">
             <div class="px-6 py-8 space-y-2 text-center max-w-lg mx-auto">
-                <a href="#home" data-i18n="menu_home" class="block px-3 py-4 text-sm font-medium text-darkText hover:bg-darkBg hover:text-lightPastel uppercase tracking-widest rounded transition">Home</a>
-                <a href="#about" data-i18n="menu_about" class="block px-3 py-4 text-sm font-medium text-darkText hover:bg-darkBg hover:text-lightPastel uppercase tracking-widest rounded transition">Chi Siamo</a>
-                <a href="#services" data-i18n="menu_services" class="block px-3 py-4 text-sm font-medium text-darkText hover:bg-darkBg hover:text-lightPastel uppercase tracking-widest rounded transition">Trattamenti</a>
-                <a href="#academy" data-i18n="menu_academy" class="block px-3 py-4 text-sm font-medium text-darkText hover:bg-darkBg hover:text-lightPastel uppercase tracking-widest rounded transition">Academy & Corsi</a>
-                <a href="#portfolio" data-i18n="menu_portfolio" class="block px-3 py-4 text-sm font-medium text-darkText hover:bg-darkBg hover:text-lightPastel uppercase tracking-widest rounded transition">Portfolio</a>
-                <a href="#contact" data-i18n="menu_contact" class="block px-3 py-4 text-sm font-medium text-darkText hover:bg-darkBg hover:text-lightPastel uppercase tracking-widest rounded transition">Dove Siamo</a>
+                <a href="#home" data-i18n="menu_home" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Home</a>
+                <a href="#about" data-i18n="menu_about" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Chi Siamo</a>
+                <a href="#services" data-i18n="menu_services" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Trattamenti</a>
+                <a href="#academy" data-i18n="menu_academy" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Academy & Corsi</a>
+                <a href="#portfolio" data-i18n="menu_portfolio" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Portfolio</a>
+                <a href="#contact" data-i18n="menu_contact" class="block px-3 py-4 text-sm font-medium text-darkText hover:text-brandPink uppercase tracking-widest transition">Dove Siamo</a>
                 
-                <button onclick="openOfferPopup()" data-i18n="menu_offer" class="w-full block px-3 py-4 text-sm font-bold text-darkText border border-darkText hover:bg-darkBg hover:text-lightPastel uppercase tracking-widest rounded transition mt-2">
+                <button onclick="openOfferPopup()" data-i18n="menu_offer" class="w-full block px-3 py-4 text-sm font-medium text-brandPink uppercase tracking-widest transition mt-2 border border-brandPink rounded">
                     <i class="fa-solid fa-gift mr-2"></i> Locandina Sconto
                 </button>
 
-                <a href="#booking" data-i18n="menu_book" class="block px-3 py-4 text-sm font-bold text-lightPastel bg-darkBg hover:opacity-90 uppercase tracking-widest rounded transition shadow-md mt-4">Prenota Ora</a>
+                <a href="#booking" data-i18n="menu_book" class="block px-3 py-4 text-sm font-medium text-lightPink bg-darkText hover:bg-gray-800 uppercase tracking-widest rounded transition shadow-md mt-4">Prenota Ora</a>
             </div>
         </div>
     </nav>
 
-    <main class="pt-20 bg-darkBg min-h-screen">
+    <main class="pt-20">
 
         <!-- HOME -->
         <section id="home" class="page-section active">
             <div class="relative w-full h-full min-h-[calc(100vh-5rem)] flex items-center py-20 lg:py-32">
                 <div class="absolute inset-0 w-full h-full">
-                    <!-- FOTO SMALTO SEMIPERMANENTE -->
-                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=2000&q=80" alt="Spa Background" class="w-full h-full object-cover object-center" />
+                    <!-- FOTO HOME: Smalto Semipermanente -->
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=2000&q=80" alt="Home Background" class="w-full h-full object-cover" />
                     <div class="absolute inset-0 hero-overlay"></div>
                 </div>
                 
                 <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                     <div class="max-w-2xl">
-                        <span data-i18n="hero_city" class="text-lightPastel uppercase tracking-widest text-sm font-semibold mb-4 block">Tradate, Varese</span>
+                        <span data-i18n="hero_city" class="text-lightPink uppercase tracking-widest text-sm font-semibold mb-4 block">Tradate, Varese</span>
                         <h1 data-i18n="hero_title" class="text-5xl md:text-7xl font-serif text-white leading-tight mb-6">
-                            Glamour & <br><span class="text-lightPastel italic">Benessere.</span>
+                            Glamour & <br><span class="text-brandPink italic">Benessere.</span>
                         </h1>
                         <p data-i18n="hero_p" class="text-lg text-gray-300 mb-10 font-light leading-relaxed max-w-lg">
                             Il tuo Beauty Bar esclusivo. Dai dettagli nails di tendenza fino all'estetica avanzata, esaltiamo la tua unicità.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="#booking" data-i18n="btn_book" class="bg-lightPastel text-darkText px-8 py-4 rounded-full text-sm uppercase tracking-widest hover:bg-white transition text-center font-bold shadow-lg">
+                            <a href="#booking" data-i18n="btn_book" class="bg-brandPink text-white px-8 py-4 rounded-full text-sm uppercase tracking-widest hover:bg-[#c2769c] transition text-center font-medium shadow-lg">
                                 Fissa un Appuntamento
-                            </a>
-                            <a href="#academy" data-i18n="btn_academy" class="bg-transparent border-2 border-lightPastel text-lightPastel px-8 py-4 rounded-full text-sm uppercase tracking-widest hover:bg-lightPastel hover:text-darkText transition text-center font-bold">
-                                Scopri i Corsi
                             </a>
                         </div>
                     </div>
@@ -173,139 +168,120 @@
         </section>
 
         <!-- CHI SIAMO -->
-        <section id="about" class="page-section py-20 bg-darkBg">
+        <section id="about" class="page-section py-20 min-h-[calc(100vh-5rem)]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="flex flex-col lg:flex-row gap-12 items-center mb-12">
-                    <!-- Testo a sinistra -->
-                    <div class="w-full lg:w-1/2">
-                        <span data-i18n="about_tag" class="text-lightPastel uppercase tracking-widest text-sm font-semibold mb-2 block">Chi Siamo</span>
-                        <h2 data-i18n="about_title" class="text-4xl font-serif text-white mb-6">Arte, Tecnica e <span class="text-lightPastel italic">Passione.</span></h2>
+                <div class="text-center mb-16">
+                    <span data-i18n="about_tag" class="text-brandPink uppercase tracking-widest text-sm font-semibold mb-2 block">Chi Siamo</span>
+                    <h2 data-i18n="about_title" class="text-4xl font-serif text-white mb-6">Arte, Tecnica e <span class="text-brandPink italic">Passione.</span></h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-12">
+                    <div>
                         <p data-i18n="about_p1" class="text-gray-300 mb-6 font-light leading-relaxed text-lg">
-                            Nails & Beauty è molto più di un centro estetico: è un laboratorio di stile e cura personale. Ci dedichiamo ogni giorno a esaltare i vostri tratti distintivi, seguendo le ultime tendenze del settore.
+                            Nails & Beauty è molto più di un centro estetico: è un laboratorio di stile e cura personale. Ci dedichiamo ogni giorno a esaltare i vostri tratti distintivi, seguendo le ultime tendenze del settore con tecniche all'avanguardia.
                         </p>
                     </div>
                     
-                    <!-- Foto Verticale a destra (FOTO GRUPPO FELICE DI DONNE) -->
-                    <div class="w-full lg:w-1/2">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Centro Estetico Staff" class="rounded-lg shadow-2xl w-full h-[500px] object-cover object-center border border-gray-800" />
+                    <div class="relative">
+                        <!-- FOTO GRUPPO ESTETISTE FELICI -->
+                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" alt="Staff Centro Estetico" class="rounded-lg shadow-xl w-full h-[600px] object-cover" />
                     </div>
                 </div>
 
-                <!-- Rettangolo orizzontale in contrasto per Ornella in basso -->
-                <div class="bg-lightPastel rounded-xl p-8 flex flex-col md:flex-row items-center text-darkBg shadow-lg">
-                    <div class="flex-grow text-center md:text-left">
-                        <h4 class="font-serif text-2xl font-bold mb-1">Ornella Vitello</h4>
-                        <p data-i18n="about_role" class="text-xs uppercase tracking-wider mb-3 font-semibold text-gray-700">Titolare & Master Beauty</p>
-                        <p data-i18n="about_quote" class="text-sm italic leading-relaxed text-gray-800 font-medium">
-                            "La mia visione è trasformare la cura estetica in vera e propria arte. Come onicotecnica, estetista e dermopigmentista, metto tutta la mia esperienza e creatività a disposizione delle mie clienti e delle mie allieve."
-                        </p>
-                    </div>
+                <!-- RETTANGOLO ROSA DEDICA ORNELLA -->
+                <div class="bg-lightPink rounded-xl p-8 shadow-lg text-center max-w-4xl mx-auto border border-brandPink/30">
+                    <h4 class="font-serif text-2xl text-darkText font-medium mb-2">Ornella Vitello</h4>
+                    <p data-i18n="about_role" class="text-xs text-brandPink uppercase tracking-wider mb-4 font-semibold">Titolare & Master Beauty</p>
+                    <p data-i18n="about_quote" class="text-base text-gray-700 italic leading-relaxed">
+                        "La mia visione è trasformare la cura estetica in vera e propria arte. Come onicotecnica, estetista e dermopigmentista, metto tutta la mia esperienza e creatività a disposizione delle mie clienti."
+                    </p>
                 </div>
             </div>
         </section>
 
         <!-- TRATTAMENTI -->
-        <section id="services" class="page-section py-20 bg-darkBg">
+        <section id="services" class="page-section py-20 min-h-[calc(100vh-5rem)]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span data-i18n="serv_tag" class="text-lightPastel uppercase tracking-widest text-sm font-semibold mb-2 block">I Nostri Servizi</span>
-                <h2 data-i18n="serv_title" class="text-4xl font-serif text-white mb-16">Il Tuo <span class="text-lightPastel italic">Beauty Bar</span></h2>
+                <span data-i18n="serv_tag" class="text-brandPink uppercase tracking-widest text-sm font-semibold mb-2 block">I Nostri Servizi</span>
+                <h2 data-i18n="serv_title" class="text-4xl font-serif text-white mb-16">Il Tuo <span class="text-brandPink italic">Beauty Bar</span></h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Nails -->
-                    <div class="service-card bg-cardBg p-10 rounded-2xl text-left shadow-lg border border-gray-800 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-bl-full z-0"></div>
-                        <i class="fa-solid fa-hand-sparkles text-4xl text-lightPastel mb-6 relative z-10"></i>
+                    <div class="service-card p-10 rounded-2xl text-left shadow-md relative overflow-hidden">
+                        <i class="fa-solid fa-hand-sparkles text-4xl text-brandPink mb-6 relative z-10"></i>
                         <h3 data-i18n="serv_nails" class="text-xl font-serif text-white mb-4 relative z-10">Nails & Acrygel</h3>
                         <ul class="text-gray-400 font-light space-y-4 mb-6 relative z-10">
-                            <li class="flex items-center"><i class="fa-solid fa-check text-lightPastel text-xs mr-3"></i> <span data-i18n="li_nails1">Ricostruzione Acrygel / Gel</span></li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-lightPastel text-xs mr-3"></i> <span data-i18n="li_nails2">Smalto Semipermanente Rinforzato</span></li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-lightPastel text-xs mr-3"></i> <span data-i18n="li_nails3">Nail Art & Design Personalizzato</span></li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandPink text-xs mr-3"></i> <span data-i18n="li_nails1">Ricostruzione Acrygel / Gel</span></li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandPink text-xs mr-3"></i> <span data-i18n="li_nails2">Smalto Semipermanente Rinforzato</span></li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandPink text-xs mr-3"></i> <span data-i18n="li_nails3">Nail Art & Design Personalizzato</span></li>
                         </ul>
                     </div>
 
-                    <!-- Lashes & Dermo -->
-                    <div class="service-card bg-cardBg p-10 rounded-2xl text-left shadow-lg border border-gray-800 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-bl-full z-0"></div>
-                        <i class="fa-solid fa-eye text-4xl text-lightPastel mb-6 relative z-10"></i>
+                    <div class="service-card p-10 rounded-2xl text-left shadow-md relative overflow-hidden">
+                        <i class="fa-solid fa-eye text-4xl text-brandPink mb-6 relative z-10"></i>
                         <h3 data-i18n="serv_eyes" class="text-xl font-serif text-white mb-4 relative z-10">Sguardo & Dermo</h3>
                         <ul class="text-gray-400 font-light space-y-4 mb-6 relative z-10">
-                            <li class="flex items-center"><i class="fa-solid fa-check text-lightPastel text-xs mr-3"></i> <span data-i18n="li_eyes1">Extension Ciglia (One to One & Volume)</span></li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-lightPastel text-xs mr-3"></i> <span data-i18n="li_eyes2">Laminazione Ciglia e Sopracciglia</span></li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-lightPastel text-xs mr-3"></i> <span data-i18n="li_eyes3">Trucco Permanente / Microblading</span></li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandPink text-xs mr-3"></i> <span data-i18n="li_eyes1">Extension Ciglia (One to One & Volume)</span></li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandPink text-xs mr-3"></i> <span data-i18n="li_eyes2">Laminazione Ciglia e Sopracciglia</span></li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandPink text-xs mr-3"></i> <span data-i18n="li_eyes3">Trucco Permanente / Microblading</span></li>
                         </ul>
                     </div>
 
-                    <!-- Body -->
-                    <div class="service-card bg-cardBg p-10 rounded-2xl text-left shadow-lg border border-gray-800 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-bl-full z-0"></div>
-                        <i class="fa-solid fa-spa text-4xl text-lightPastel mb-6 relative z-10"></i>
+                    <div class="service-card p-10 rounded-2xl text-left shadow-md relative overflow-hidden">
+                        <i class="fa-solid fa-spa text-4xl text-brandPink mb-6 relative z-10"></i>
                         <h3 data-i18n="serv_body" class="text-xl font-serif text-white mb-4 relative z-10">Estetica & Corpo</h3>
                         <ul class="text-gray-400 font-light space-y-4 mb-6 relative z-10">
-                            <li class="flex items-center"><i class="fa-solid fa-check text-lightPastel text-xs mr-3"></i> <span data-i18n="li_body1">Epilazione Laser Definitiva</span></li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-lightPastel text-xs mr-3"></i> <span data-i18n="li_body2">Trattamenti Viso Specifici</span></li>
-                            <li class="flex items-center"><i class="fa-solid fa-check text-lightPastel text-xs mr-3"></i> <span data-i18n="li_body3">Make-up Eventi e Sposa</span></li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandPink text-xs mr-3"></i> <span data-i18n="li_body1">Epilazione Laser Definitiva</span></li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandPink text-xs mr-3"></i> <span data-i18n="li_body2">Trattamenti Viso Specifici</span></li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandPink text-xs mr-3"></i> <span data-i18n="li_body3">Make-up Eventi e Sposa</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ACADEMY -->
-        <section id="academy" class="page-section py-20 bg-darkBg text-white">
+        <!-- ACADEMY (I Corsi) -->
+        <section id="academy" class="page-section py-20 min-h-[calc(100vh-5rem)]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <span data-i18n="acad_tag" class="text-lightPastel uppercase tracking-widest text-sm font-semibold mb-2 block">Formazione Professionale</span>
-                    <h2 data-i18n="acad_title" class="text-4xl font-serif mb-4">Nails & Beauty <span class="text-lightPastel italic">Academy</span></h2>
+                    <span data-i18n="acad_tag" class="text-brandPink uppercase tracking-widest text-sm font-semibold mb-2 block">Formazione Professionale</span>
+                    <h2 data-i18n="acad_title" class="text-4xl font-serif text-white mb-4">Nails & Beauty <span class="text-brandPink italic">Academy</span></h2>
                     <p data-i18n="acad_p" class="text-gray-400 font-light max-w-2xl mx-auto">Impara dalle migliori. Corsi individuali e di gruppo con rilascio di attestato, teoria e tantissima pratica.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Corso 1 (Make-up RAGAZZA TRUCCATA) -->
-                    <div class="course-card bg-cardBg rounded-xl overflow-hidden border border-gray-800 flex flex-col transition hover:border-lightPastel">
-                        <div class="h-48 w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1512496015851-a1dc8ca91207?auto=format&fit=crop&w=600&q=80');"></div>
+                    <!-- Corso 1 (Make-up) -->
+                    <div class="course-card bg-[#1f1f1f] rounded-xl overflow-hidden border border-gray-800 flex flex-col transition hover:border-brandPink">
+                        <!-- FOTO MAKEUP -->
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1512496015851-a1dc8ca91207?auto=format&fit=crop&w=800&q=80');"></div>
                         <div class="p-8 flex-grow flex flex-col">
-                            <span class="text-lightPastel text-xs font-bold uppercase tracking-widest mb-2">Individuale</span>
-                            <h3 data-i18n="crs1_title" class="text-2xl font-serif mb-3">Self Make-Up</h3>
+                            <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2">Individuale</span>
+                            <h3 data-i18n="crs1_title" class="text-2xl font-serif text-white mb-3">Self Make-Up</h3>
                             <p data-i18n="crs1_p" class="text-gray-400 text-sm font-light mb-6 flex-grow">"Il viso è una tela dove poter creare un dipinto". Impara le tecniche per un trucco giornaliero, veloce e pratico.</p>
-                            <div class="flex justify-between items-center mb-6 text-sm">
-                                <span class="text-gray-300"><i class="fa-regular fa-clock text-lightPastel mr-2"></i> 120 Minuti</span>
-                                <span class="text-white font-bold text-lg">70 €</span>
-                            </div>
-                            <a href="https://wa.me/393333463270?text=Salve,%20vorrei%20informazioni%20sul%20Corso%20di%20Self%20Make-Up" target="_blank" rel="noopener noreferrer" class="block w-full py-3 border border-lightPastel text-lightPastel text-center rounded hover:bg-lightPastel hover:text-darkBg transition uppercase text-xs tracking-widest font-semibold">Richiedi Info</a>
+                            <a href="https://wa.me/393333463270" target="_blank" rel="noopener noreferrer" class="block w-full py-3 border border-brandPink text-brandPink text-center rounded hover:bg-brandPink hover:text-white transition uppercase text-xs tracking-widest font-semibold">Richiedi Info</a>
                         </div>
                     </div>
 
-                    <!-- Corso 2 (FOTO OCCHIO CIGLIA) -->
-                    <div class="course-card bg-cardBg rounded-xl overflow-hidden border border-gray-800 flex flex-col relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(252,243,248,0.1)]">
-                        <div class="absolute top-4 right-4 bg-lightPastel text-darkBg text-[10px] font-bold uppercase px-3 py-1 rounded-full z-10" data-i18n="acad_bestseller">Più Richiesto</div>
-                        
-                        <div class="h-48 w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1629363447953-b1d6216a9c4b?auto=format&fit=crop&w=600&q=80');"></div>
-                        
+                    <!-- Corso 2 (Ciglia) -->
+                    <div class="course-card bg-[#1f1f1f] rounded-xl overflow-hidden border border-gray-800 flex flex-col transition hover:border-brandPink">
+                        <!-- FOTO CIGLIA RAVVICINATA -->
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1583001931096-959e9a1a6223?auto=format&fit=crop&w=800&q=80');"></div>
                         <div class="p-8 flex-grow flex flex-col">
-                            <span class="text-lightPastel text-xs font-bold uppercase tracking-widest mb-2">Corso Pratico</span>
-                            <h3 data-i18n="crs2_title" class="text-2xl font-serif mb-3">Extension Ciglia (One to One)</h3>
+                            <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2">Corso Pratico</span>
+                            <h3 data-i18n="crs2_title" class="text-2xl font-serif text-white mb-3">Extension Ciglia (One to One)</h3>
                             <p data-i18n="crs2_p" class="text-gray-400 text-sm font-light mb-6 flex-grow">Max 2 partecipanti. Teoria, pratica su modella e kit in dotazione incluso nel prezzo. Rilascio Attestato.</p>
-                            <div class="flex justify-between items-center mb-6 text-sm border-t border-gray-800 pt-4">
-                                <span class="text-gray-300"><i class="fa-regular fa-calendar text-lightPastel mr-2"></i> Lunedì (10:00 - 15:00)</span>
-                                <span class="text-white font-bold text-lg">250 €</span>
-                            </div>
-                            <a href="https://wa.me/393333463270?text=Salve,%20vorrei%20iscrivermi%20al%20Corso%20di%20Extension%20Ciglia" target="_blank" rel="noopener noreferrer" class="block w-full py-3 bg-lightPastel text-darkBg text-center rounded hover:bg-white transition uppercase text-xs tracking-widest font-bold">Iscriviti Ora</a>
+                            <a href="https://wa.me/393333463270" target="_blank" rel="noopener noreferrer" class="block w-full py-3 bg-brandPink text-white text-center rounded hover:bg-[#c2769c] transition uppercase text-xs tracking-widest font-semibold">Iscriviti Ora</a>
                         </div>
                     </div>
 
                     <!-- Corso 3 (Smalto) -->
-                    <div class="course-card bg-cardBg rounded-xl overflow-hidden border border-gray-800 flex flex-col transition hover:border-lightPastel">
-                        <div class="h-48 w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="course-card bg-[#1f1f1f] rounded-xl overflow-hidden border border-gray-800 flex flex-col transition hover:border-brandPink">
+                        <!-- FOTO UNGHIE (Stessa della Home per coerenza estetica) -->
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=80');"></div>
                         <div class="p-8 flex-grow flex flex-col">
-                            <span class="text-lightPastel text-xs font-bold uppercase tracking-widest mb-2">Corso Pratico</span>
-                            <h3 data-i18n="crs3_title" class="text-2xl font-serif mb-3">Smalto Semipermanente</h3>
+                            <span class="text-brandPink text-xs font-bold uppercase tracking-widest mb-2">Corso Pratico</span>
+                            <h3 data-i18n="crs3_title" class="text-2xl font-serif text-white mb-3">Smalto Semipermanente</h3>
                             <p data-i18n="crs3_p" class="text-gray-400 text-sm font-light mb-6 flex-grow">Max 2 partecipanti. Impara a preparare l'unghia e stendere perfettamente il colore in modo duraturo.</p>
-                            <div class="flex justify-between items-center mb-6 text-sm border-t border-gray-800 pt-4">
-                                <span class="text-gray-300"><i class="fa-regular fa-calendar text-lightPastel mr-2"></i> Lunedì (10:00 - 15:00)</span>
-                                <span class="text-white font-bold text-lg">250 €</span>
-                            </div>
-                            <a href="https://wa.me/393333463270?text=Salve,%20vorrei%20iscrivermi%20al%20Corso%20di%20Smalto%20Semipermanente" target="_blank" rel="noopener noreferrer" class="block w-full py-3 border border-lightPastel text-lightPastel text-center rounded hover:bg-lightPastel hover:text-darkBg transition uppercase text-xs tracking-widest font-semibold">Iscriviti Ora</a>
+                            <a href="https://wa.me/393333463270" target="_blank" rel="noopener noreferrer" class="block w-full py-3 border border-brandPink text-brandPink text-center rounded hover:bg-brandPink hover:text-white transition uppercase text-xs tracking-widest font-semibold">Iscriviti Ora</a>
                         </div>
                     </div>
                 </div>
@@ -313,121 +289,41 @@
         </section>
 
         <!-- GALLERIA -->
-        <section id="portfolio" class="page-section py-20 bg-darkBg">
+        <section id="portfolio" class="page-section py-20 min-h-[calc(100vh-5rem)]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span data-i18n="port_tag" class="text-lightPastel uppercase tracking-widest text-sm font-semibold mb-2 block">Portfolio Lavori</span>
-                <h2 data-i18n="port_title" class="text-4xl font-serif text-white mb-16">Le Nostre <span class="text-lightPastel italic">Creazioni</span></h2>
+                <span data-i18n="port_tag" class="text-brandPink uppercase tracking-widest text-sm font-semibold mb-2 block">Portfolio Lavori</span>
+                <h2 data-i18n="port_title" class="text-4xl font-serif text-white mb-16">Le Nostre <span class="text-brandPink italic">Creazioni</span></h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- FOTO UNGHIE -->
-                    <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-cardBg">
+                    <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-[#1f1f1f]">
                         <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=80" alt="Nails Art" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#121212]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <h3 data-i18n="port_img1" class="text-2xl font-serif text-white tracking-widest uppercase">Nail Art</h3>
+                        <div class="absolute inset-0 bg-bgDark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <h3 data-i18n="port_img1" class="text-2xl font-serif text-brandPink tracking-widest uppercase">Nail Art</h3>
                         </div>
                     </div>
                     
-                    <!-- FOTO CIGLIA PERFETTA (Garantita) -->
-                    <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-cardBg">
-                        <img src="https://images.unsplash.com/photo-1629363447953-b1d6216a9c4b?auto=format&fit=crop&w=800&q=80" alt="Lashes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#121212]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <h3 data-i18n="port_img2" class="text-2xl font-serif text-white tracking-widest uppercase">Lashes</h3>
+                    <!-- FOTO CIGLIA RAVVICINATA -->
+                    <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-[#1f1f1f]">
+                        <img src="https://images.unsplash.com/photo-1583001931096-959e9a1a6223?auto=format&fit=crop&w=800&q=80" alt="Lashes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-bgDark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <h3 data-i18n="port_img2" class="text-2xl font-serif text-brandPink tracking-widest uppercase">Lashes</h3>
                         </div>
                     </div>
                     
-                    <!-- FOTO MAKE UP RAGAZZA TRUCCATA -->
-                    <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-cardBg">
+                    <!-- FOTO MAKEUP -->
+                    <div class="group relative rounded-lg overflow-hidden shadow-sm aspect-square bg-[#1f1f1f]">
                         <img src="https://images.unsplash.com/photo-1512496015851-a1dc8ca91207?auto=format&fit=crop&w=800&q=80" alt="Makeup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-[#121212]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <h3 data-i18n="port_img3" class="text-2xl font-serif text-white tracking-widest uppercase">Make-up</h3>
+                        <div class="absolute inset-0 bg-bgDark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <h3 data-i18n="port_img3" class="text-2xl font-serif text-brandPink tracking-widest uppercase">Make-up</h3>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="mt-12">
-                    <a href="https://www.instagram.com/nails_e_beauty_ornella/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-gray-300 hover:text-lightPastel transition font-medium uppercase tracking-widest text-sm">
-                        <i class="fa-brands fa-instagram text-xl mr-3 text-lightPastel"></i> <span data-i18n="port_ig">Vedi tutto su Instagram</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- PRENOTA -->
-        <section id="booking" class="page-section py-20 bg-darkBg">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-cardBg p-8 md:p-12 rounded-2xl shadow-xl border border-gray-800">
-                    <div class="text-center mb-10">
-                        <span class="text-lightPastel text-xs font-bold uppercase tracking-widest mb-2 block border border-lightPastel inline-block px-3 py-1 rounded">Si riceve solo su appuntamento</span>
-                        <h2 data-i18n="book_title" class="text-3xl font-serif text-white mb-4 mt-4">Prenota il tuo Trattamento</h2>
-                        <p data-i18n="book_p" class="text-gray-400 font-light">Seleziona data e ora preferita dal nostro sistema intelligente.</p>
-                    </div>
-
-                    <!-- CALENDARIO VISIVO -->
-                    <div class="bg-[#121212] rounded-xl p-6 shadow-sm border border-gray-800 mb-8 max-w-md mx-auto">
-                        <div class="flex justify-between items-center mb-6">
-                            <button class="text-gray-500 hover:text-lightPastel transition"><i class="fa-solid fa-chevron-left"></i></button>
-                            <span class="font-medium text-white uppercase tracking-widest text-sm">Novembre 2026</span>
-                            <button class="text-gray-500 hover:text-lightPastel transition"><i class="fa-solid fa-chevron-right"></i></button>
-                        </div>
-                        
-                        <div class="grid grid-cols-7 gap-2 text-center mb-6">
-                            <div class="text-xs text-gray-500 font-semibold">LUN</div>
-                            <div class="text-xs text-gray-500 font-semibold">MAR</div>
-                            <div class="text-xs text-gray-500 font-semibold">MER</div>
-                            <div class="text-xs text-gray-500 font-semibold">GIO</div>
-                            <div class="text-xs text-gray-500 font-semibold">VEN</div>
-                            <div class="text-xs text-gray-500 font-semibold">SAB</div>
-                            <div class="text-xs text-lightPastel font-semibold">DOM</div>
-                            
-                            <div class="py-2 text-gray-700 text-sm">26</div>
-                            <div class="py-2 text-gray-700 text-sm">27</div>
-                            <div class="py-2 text-gray-700 text-sm">28</div>
-                            <div class="py-2 text-gray-700 text-sm">29</div>
-                            <div class="py-2 text-gray-700 text-sm">30</div>
-                            <div class="py-2 text-gray-700 text-sm">31</div>
-                            <div class="py-2 text-lightPastel/30 text-sm">1</div>
-                            
-                            <div class="py-2 text-gray-300 hover:bg-cardBg hover:text-lightPastel rounded cursor-pointer transition text-sm">2</div>
-                            <div class="py-2 bg-lightPastel text-darkBg rounded cursor-pointer shadow-md text-sm font-bold transform scale-110">3</div>
-                            <div class="py-2 text-gray-300 hover:bg-cardBg hover:text-lightPastel rounded cursor-pointer transition text-sm">4</div>
-                            <div class="py-2 text-gray-300 hover:bg-cardBg hover:text-lightPastel rounded cursor-pointer transition text-sm">5</div>
-                            <div class="py-2 text-gray-300 hover:bg-cardBg hover:text-lightPastel rounded cursor-pointer transition text-sm">6</div>
-                            <div class="py-2 text-gray-300 hover:bg-cardBg hover:text-lightPastel rounded cursor-pointer transition text-sm">7</div>
-                            <div class="py-2 text-lightPastel/30 text-sm">8</div>
-                        </div>
-
-                        <div class="border-t border-gray-800 pt-6">
-                            <span data-i18n="book_avail" class="block text-xs text-gray-500 mb-3 uppercase tracking-wider font-semibold">Orari Disponibili (3 Nov)</span>
-                            <div class="flex flex-wrap gap-2 justify-center">
-                                <button class="px-3 py-1.5 border border-gray-700 text-xs text-gray-400 rounded hover:border-lightPastel hover:text-lightPastel bg-cardBg transition">10:00</button>
-                                <button class="px-3 py-1.5 border border-lightPastel bg-lightPastel text-xs text-darkBg rounded font-bold shadow-sm">11:30</button>
-                                <button class="px-3 py-1.5 border border-gray-700 text-xs text-gray-400 rounded hover:border-lightPastel hover:text-lightPastel bg-cardBg transition">15:00</button>
-                                <button class="px-3 py-1.5 border border-gray-700 text-xs text-gray-400 rounded hover:border-lightPastel hover:text-lightPastel bg-cardBg transition">17:00</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center flex flex-col items-center">
-                        <a href="javascript:void(0)" data-i18n="btn_confirm" class="block w-full max-w-md mx-auto bg-lightPastel text-darkBg py-4 rounded-full text-sm uppercase tracking-widest hover:bg-white transition font-bold shadow-lg mb-6 text-center">
-                            Richiedi Appuntamento
-                        </a>
-
-                        <div class="w-full flex items-center justify-center mb-6 max-w-sm">
-                            <div class="h-px bg-gray-800 flex-1"></div>
-                            <span data-i18n="book_or" class="px-4 text-xs text-gray-500 uppercase tracking-widest font-medium">Oppure prenota via chat</span>
-                            <div class="h-px bg-gray-800 flex-1"></div>
-                        </div>
-                        
-                        <a href="https://wa.me/393333463270" target="_blank" rel="noopener noreferrer" class="w-full max-w-md bg-[#25D366] text-white py-4 rounded-full text-sm font-bold tracking-wide hover:bg-[#20b858] transition flex items-center justify-center shadow-md">
-                            <i class="fa-brands fa-whatsapp text-xl mr-3"></i> <span data-i18n="btn_wa">Messaggio WhatsApp</span>
-                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- DOVE SIAMO -->
-        <section id="contact" class="page-section bg-darkBg min-h-[calc(100vh-5rem)] flex flex-col justify-between">
+        <!-- DOVE SIAMO & PRENOTAZIONI -->
+        <section id="contact" class="page-section min-h-[calc(100vh-5rem)] flex flex-col justify-between">
             <div class="py-20 flex-grow flex items-center">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                     
@@ -437,33 +333,32 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-16 text-center md:text-left max-w-4xl mx-auto">
-                        <div class="bg-cardBg p-8 rounded-2xl border border-gray-800 shadow-sm">
-                            <i class="fa-solid fa-location-dot text-3xl text-lightPastel mb-6"></i>
+                        <div class="bg-[#1f1f1f] p-8 rounded-2xl border border-gray-800 shadow-sm">
+                            <i class="fa-solid fa-location-dot text-3xl text-brandPink mb-6"></i>
                             <h4 data-i18n="cont_addr" class="font-medium text-xl mb-4 tracking-wider text-white">INDIRIZZO</h4>
                             <p class="text-gray-400 font-light leading-relaxed mb-4">
                                 Nails & Beauty di Ornella Vitello<br>
                                 Via Generale Antonio Cantore 5<br>
                                 Tradate (VA)
                             </p>
-                            <!-- MAPPA FUNZIONANTE! -->
-                            <a href="https://maps.google.com/?q=Nails+%26+Beauty+di+Ornella,+Via+Generale+Antonio+Cantore+5,+Tradate" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-lightPastel hover:text-white transition text-sm font-bold uppercase tracking-widest mb-6">
+                            <a href="https://maps.google.com/?q=Nails+%26+Beauty+di+Ornella,+Via+Generale+Antonio+Cantore+5,+Tradate" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brandPink hover:text-white transition text-sm font-medium uppercase tracking-widest mb-6">
                                 <i class="fa-solid fa-map text-lg mr-2"></i> <span data-i18n="cont_map">Apri Mappa Completa</span>
                             </a>
                             <br>
-                            <a href="https://wa.me/393333463270" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-lightPastel transition flex items-center justify-center md:justify-start font-medium text-lg mt-4 border-t border-gray-800 pt-6">
+                            <a href="https://wa.me/393333463270" target="_blank" rel="noopener noreferrer" class="text-white hover:text-brandPink transition flex items-center justify-center md:justify-start font-medium text-lg mt-4 border-t border-gray-700 pt-6">
                                 <i class="fa-brands fa-whatsapp mr-3 text-2xl text-[#25D366]"></i> Contattaci al 333 346 3270
                             </a>
                         </div>
                         
-                        <div class="bg-cardBg p-8 rounded-2xl border border-gray-800 shadow-sm">
-                            <i class="fa-solid fa-clock text-3xl text-lightPastel mb-6"></i>
+                        <div class="bg-[#1f1f1f] p-8 rounded-2xl border border-gray-800 shadow-sm">
+                            <i class="fa-solid fa-clock text-3xl text-brandPink mb-6"></i>
                             <h4 data-i18n="cont_hours" class="font-medium text-xl mb-4 tracking-wider text-white">ORARI</h4>
                             <ul class="text-gray-400 font-light space-y-4">
                                 <li class="flex justify-between border-b border-gray-800 pb-2"><span data-i18n="day_1">Lunedì</span> <span>10:00 - 16:00</span></li>
                                 <li class="flex justify-between border-b border-gray-800 pb-2"><span data-i18n="day_2_3">Mar - Mer</span> <span>10:00 - 18:00</span></li>
                                 <li class="flex justify-between border-b border-gray-800 pb-2"><span data-i18n="day_4_5">Gio - Ven</span> <span>10:00 - 19:00</span></li>
                                 <li class="flex justify-between border-b border-gray-800 pb-2"><span data-i18n="day_6">Sabato</span> <span>09:00 - 16:00</span></li>
-                                <li class="flex justify-between text-lightPastel pt-2 font-medium"><span data-i18n="day_7">Domenica</span> <span data-i18n="closed">Chiuso</span></li>
+                                <li class="flex justify-between text-brandPink pt-2"><span data-i18n="day_7">Domenica</span> <span data-i18n="closed">Chiuso</span></li>
                             </ul>
                         </div>
                     </div>
@@ -473,32 +368,32 @@
 
     </main>
 
-    <!-- FOOTER FISSO ROSA PASTELLO -->
+    <!-- FOOTER FISSO -->
     <footer id="fixed-footer">
-        <div style="font-size: 0.8rem; font-weight: 600; color: #1a1a1a;">
+        <div style="font-size: 0.8rem; font-weight: 500; color: #1a1a1a;">
             &copy; 2026 @ Nails & Beauty
         </div>
         <div class="footer-socials flex items-center">
-            <a href="https://www.instagram.com/nails_e_beauty_ornella/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.instagram.com/nails_e_beauty_/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.facebook.com/search/top?q=Nails%20%26%20Beauty" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
         </div>
     </footer>
 
-    <!-- POPUP OFFERTA -->
+    <!-- POPUP OFFERTA (Sfondo scuro, testi bianchi, bottoni rosa pastello) -->
     <div id="offer-popup" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center opacity-0 invisible transition-all duration-500" style="z-index: 9999;">
-        <div class="bg-darkBg border border-gray-800 rounded-2xl shadow-2xl max-w-md w-full mx-4 overflow-hidden transform scale-95 transition-transform duration-500 relative" id="popup-content">
+        <div class="bg-bgDark rounded-2xl shadow-2xl border border-gray-700 max-w-md w-full mx-4 overflow-hidden transform scale-95 transition-transform duration-500 relative" id="popup-content">
             
-            <button onclick="closePopup()" class="absolute top-4 right-4 text-lightPastel hover:text-white focus:outline-none z-50 bg-cardBg rounded-full w-10 h-10 flex items-center justify-center shadow-md transition">
+            <button onclick="closePopup()" class="absolute top-4 right-4 text-gray-400 hover:text-white focus:outline-none z-50 bg-[#1f1f1f] rounded-full w-10 h-10 flex items-center justify-center shadow-md transition">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
             
             <div class="p-10 text-center relative z-10">
-                <span data-i18n="pop_tag" class="bg-lightPastel text-darkBg text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 inline-block shadow-sm">Promo Esclusiva</span>
-                <h4 data-i18n="pop_title" class="text-3xl font-serif text-lightPastel mb-3">Vieni a Scoprirci!</h4>
-                <p data-i18n="pop_p" class="text-gray-300 text-sm mb-6 font-light leading-relaxed">Mostra questo coupon in negozio per ricevere un trattamento speciale al tuo primo appuntamento.</p>
-                <div class="text-5xl font-serif text-lightPastel mb-8">10% <span data-i18n="pop_old" class="text-sm text-gray-400 uppercase tracking-widest block mt-2 font-sans font-medium">Di Sconto Benvenuto</span></div>
+                <span data-i18n="pop_tag" class="bg-brandPink text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 inline-block shadow-sm">Promo Esclusiva</span>
+                <h4 data-i18n="pop_title" class="text-3xl font-serif text-white mb-3">Vieni a Scoprirci!</h4>
+                <p data-i18n="pop_p" class="text-gray-400 text-sm mb-6 font-light leading-relaxed">Mostra questo coupon in negozio per ricevere un trattamento speciale al tuo primo appuntamento.</p>
+                <div class="text-5xl font-serif text-brandPink mb-8">10% <span data-i18n="pop_old" class="text-sm text-gray-500 uppercase tracking-widest block mt-2 font-sans font-medium">Di Sconto Benvenuto</span></div>
                 
-                <a href="https://wa.me/393333463270?text=Salve,%20vorrei%20prenotare%20un%20appuntamento%20usando%20lo%20sconto%20del%2010%25!" target="_blank" rel="noopener noreferrer" onclick="closePopup();" class="block w-full bg-lightPastel text-darkBg py-4 rounded-full text-sm font-bold tracking-wide hover:bg-white transition shadow-lg text-center">
+                <a href="https://wa.me/393333463270?text=Salve,%20vorrei%20prenotare%20un%20appuntamento%20usando%20lo%20sconto%20del%2010%25!" target="_blank" rel="noopener noreferrer" onclick="closePopup();" class="block w-full bg-lightPink text-darkText py-4 rounded-full text-sm font-bold tracking-wide hover:bg-brandPink hover:text-white transition shadow-lg text-center">
                     <span data-i18n="pop_btn">Richiedi Sconto via WhatsApp</span>
                 </a>
             </div>
@@ -509,38 +404,34 @@
         const i18n = {
             'IT': {
                 'menu_home': 'Home', 'menu_about': 'Chi Siamo', 'menu_services': 'Trattamenti', 'menu_academy': 'Academy & Corsi', 'menu_portfolio': 'Portfolio', 'menu_contact': 'Dove Siamo', 'menu_offer': 'Locandina Sconto', 'menu_book': 'Prenota Ora',
-                'hero_city': 'Tradate, Varese', 'hero_title': 'Glamour & <br><span class="text-lightPastel italic">Benessere.</span>', 'hero_p': 'Il tuo Beauty Bar esclusivo. Dai dettagli nails di tendenza fino all\'estetica avanzata, esaltiamo la tua unicità.', 'btn_book': 'Fissa un Appuntamento', 'btn_academy': 'Scopri i Corsi',
-                'about_tag': 'Chi Siamo', 'about_title': 'Arte, Tecnica e <span class="text-lightPastel italic">Passione.</span>', 'about_p1': 'Nails & Beauty è molto più di un centro estetico: è un laboratorio di stile e cura personale. Ci dedichiamo ogni giorno a esaltare i vostri tratti distintivi, seguendo le ultime tendenze del settore.', 'about_role': 'Titolare & Master Beauty', 'about_quote': '"La mia visione è trasformare la cura estetica in vera e propria arte. Come onicotecnica, estetista e dermopigmentista, metto tutta la mia esperienza e creatività a disposizione delle mie clienti e delle mie allieve."',
-                'serv_tag': 'I Nostri Servizi', 'serv_title': 'Il Tuo <span class="text-lightPastel italic">Beauty Bar</span>', 'serv_nails': 'Nails & Acrygel', 'serv_eyes': 'Sguardo & Dermo', 'serv_body': 'Estetica & Corpo',
+                'hero_city': 'Tradate, Varese', 'hero_title': 'Glamour & <br><span class="text-brandPink italic">Benessere.</span>', 'hero_p': 'Il tuo Beauty Bar esclusivo. Dai dettagli nails di tendenza fino all\'estetica avanzata, esaltiamo la tua unicità.', 'btn_book': 'Fissa un Appuntamento',
+                'about_tag': 'Chi Siamo', 'about_title': 'Arte, Tecnica e <span class="text-brandPink italic">Passione.</span>', 'about_p1': 'Nails & Beauty è molto più di un centro estetico: è un laboratorio di stile e cura personale. Ci dedichiamo ogni giorno a esaltare i vostri tratti distintivi, seguendo le ultime tendenze del settore con tecniche all\'avanguardia.', 'about_role': 'Titolare & Master Beauty', 'about_quote': '"La mia visione è trasformare la cura estetica in vera e propria arte. Come onicotecnica, estetista e dermopigmentista, metto tutta la mia esperienza e creatività a disposizione delle mie clienti."',
+                'serv_tag': 'I Nostri Servizi', 'serv_title': 'Il Tuo <span class="text-brandPink italic">Beauty Bar</span>', 'serv_nails': 'Nails & Acrygel', 'serv_eyes': 'Sguardo & Dermo', 'serv_body': 'Estetica & Corpo',
                 'li_nails1': 'Ricostruzione Acrygel / Gel', 'li_nails2': 'Smalto Semipermanente Rinforzato', 'li_nails3': 'Nail Art & Design Personalizzato',
                 'li_eyes1': 'Extension Ciglia (One to One & Volume)', 'li_eyes2': 'Laminazione Ciglia e Sopracciglia', 'li_eyes3': 'Trucco Permanente / Microblading',
                 'li_body1': 'Epilazione Laser Definitiva', 'li_body2': 'Trattamenti Viso Specifici', 'li_body3': 'Make-up Eventi e Sposa',
-                'acad_tag': 'Formazione Professionale', 'acad_title': 'Nails & Beauty <span class="text-lightPastel italic">Academy</span>', 'acad_p': 'Impara dalle migliori. Corsi individuali e di gruppo con rilascio di attestato, teoria e tantissima pratica.',
-                'acad_bestseller': 'Più Richiesto', 'crs1_title': 'Self Make-Up', 'crs1_p': '"Il viso è una tela dove poter creare un dipinto". Impara le tecniche per un trucco giornaliero, veloce e pratico.',
+                'acad_tag': 'Formazione Professionale', 'acad_title': 'Nails & Beauty <span class="text-brandPink italic">Academy</span>', 'acad_p': 'Impara dalle migliori. Corsi individuali e di gruppo con rilascio di attestato, teoria e tantissima pratica.',
+                'crs1_title': 'Self Make-Up', 'crs1_p': '"Il viso è una tela dove poter creare un dipinto". Impara le tecniche per un trucco giornaliero, veloce e pratico.',
                 'crs2_title': 'Extension Ciglia (One to One)', 'crs2_p': 'Max 2 partecipanti. Teoria, pratica su modella e kit in dotazione incluso nel prezzo. Rilascio Attestato.',
                 'crs3_title': 'Smalto Semipermanente', 'crs3_p': 'Max 2 partecipanti. Impara a preparare l\'unghia e stendere perfettamente il colore in modo duraturo.',
-                'port_tag': 'Portfolio Lavori', 'port_title': 'Le Nostre <span class="text-lightPastel italic">Creazioni</span>', 'port_ig': 'Vedi tutto su Instagram',
-                'port_img1': 'Nail Art', 'port_img2': 'Lashes', 'port_img3': 'Make-up',
-                'book_title': 'Prenota il tuo Trattamento', 'book_p': 'Seleziona data e ora preferita dal nostro sistema intelligente.', 'book_avail': 'Orari Disponibili (3 Nov)', 'btn_confirm': 'Richiedi Appuntamento', 'book_or': 'Oppure prenota via chat', 'btn_wa': 'Messaggio WhatsApp',
+                'port_tag': 'Portfolio Lavori', 'port_title': 'Le Nostre <span class="text-brandPink italic">Creazioni</span>', 'port_img1': 'Nail Art', 'port_img2': 'Lashes', 'port_img3': 'Make-up',
                 'contact_title': 'Vieni a trovarci', 'contact_p': 'Gli orari indicati potrebbero subire variazioni.', 'cont_addr': 'INDIRIZZO', 'cont_map': 'Apri Mappa Completa', 'cont_hours': 'ORARI',
                 'day_1': 'Lunedì', 'day_2_3': 'Mar - Mer', 'day_4_5': 'Gio - Ven', 'day_6': 'Sabato', 'day_7': 'Domenica', 'closed': 'Chiuso',
                 'pop_tag': 'Promo Esclusiva', 'pop_title': 'Vieni a Scoprirci!', 'pop_p': 'Mostra questo coupon in negozio per ricevere un trattamento speciale al tuo primo appuntamento.', 'pop_old': 'Di Sconto Benvenuto', 'pop_btn': 'Richiedi Sconto via WhatsApp'
             },
             'EN': {
                 'menu_home': 'Home', 'menu_about': 'About Us', 'menu_services': 'Treatments', 'menu_academy': 'Academy & Courses', 'menu_portfolio': 'Portfolio', 'menu_contact': 'Location', 'menu_offer': 'Special Offer', 'menu_book': 'Book Now',
-                'hero_city': 'Tradate, Italy', 'hero_title': 'Glamour & <br><span class="text-lightPastel italic">Wellness.</span>', 'hero_p': 'Your exclusive Beauty Bar. From trendy nail details to advanced aesthetics, we enhance your uniqueness.', 'btn_book': 'Book an Appointment', 'btn_academy': 'Discover Courses',
-                'about_tag': 'About Us', 'about_title': 'Art, Technique and <span class="text-lightPastel italic">Passion.</span>', 'about_p1': 'Nails & Beauty is much more than a beauty center: it is a laboratory of style and personal care. We dedicate ourselves every day to enhancing your distinctive features, following the latest industry trends.', 'about_role': 'Owner & Master Beauty', 'about_quote': '"My vision is to transform aesthetic care into true art. As a nail technician, beautician, and dermopigmentist, I put all my experience and creativity at the disposal of my clients and my students."',
-                'serv_tag': 'Our Services', 'serv_title': 'Your <span class="text-lightPastel italic">Beauty Bar</span>', 'serv_nails': 'Nails & Acrygel', 'serv_eyes': 'Lashes & Dermo', 'serv_body': 'Aesthetics & Body',
+                'hero_city': 'Tradate, Italy', 'hero_title': 'Glamour & <br><span class="text-brandPink italic">Wellness.</span>', 'hero_p': 'Your exclusive Beauty Bar. From trendy nail details to advanced aesthetics, we enhance your uniqueness.', 'btn_book': 'Book an Appointment',
+                'about_tag': 'About Us', 'about_title': 'Art, Technique and <span class="text-brandPink italic">Passion.</span>', 'about_p1': 'Nails & Beauty is much more than a beauty center: it is a laboratory of style and personal care. We dedicate ourselves every day to enhancing your distinctive features, following the latest industry trends with cutting-edge techniques.', 'about_role': 'Owner & Master Beauty', 'about_quote': '"My vision is to transform aesthetic care into true art. As a nail technician, beautician, and dermopigmentist, I put all my experience and creativity at the disposal of my clients."',
+                'serv_tag': 'Our Services', 'serv_title': 'Your <span class="text-brandPink italic">Beauty Bar</span>', 'serv_nails': 'Nails & Acrygel', 'serv_eyes': 'Lashes & Dermo', 'serv_body': 'Aesthetics & Body',
                 'li_nails1': 'Acrygel / Gel Reconstruction', 'li_nails2': 'Reinforced Semi-Permanent Polish', 'li_nails3': 'Nail Art & Custom Design',
                 'li_eyes1': 'Eyelash Extension (One to One & Volume)', 'li_eyes2': 'Lash and Brow Lamination', 'li_eyes3': 'Permanent Makeup / Microblading',
                 'li_body1': 'Definitive Laser Hair Removal', 'li_body2': 'Specific Facial Treatments', 'li_body3': 'Event and Bridal Make-up',
-                'acad_tag': 'Professional Training', 'acad_title': 'Nails & Beauty <span class="text-lightPastel italic">Academy</span>', 'acad_p': 'Learn from the best. Individual and group courses with certificate issuance, theory, and lots of practice.',
-                'acad_bestseller': 'Best Seller', 'crs1_title': 'Self Make-Up', 'crs1_p': '"The face is a canvas where you can create a painting". Learn the techniques for a daily, fast, and practical makeup.',
+                'acad_tag': 'Professional Training', 'acad_title': 'Nails & Beauty <span class="text-brandPink italic">Academy</span>', 'acad_p': 'Learn from the best. Individual and group courses with certificate issuance, theory, and lots of practice.',
+                'crs1_title': 'Self Make-Up', 'crs1_p': '"The face is a canvas where you can create a painting". Learn the techniques for a daily, fast, and practical makeup.',
                 'crs2_title': 'Eyelash Extension (One to One)', 'crs2_p': 'Max 2 participants. Theory, practice on a model, and included kit. Certificate issuance.',
                 'crs3_title': 'Semi-Permanent Polish', 'crs3_p': 'Max 2 participants. Learn how to prepare the nail and apply color perfectly and lastingly.',
-                'port_tag': 'Work Portfolio', 'port_title': 'Our <span class="text-lightPastel italic">Creations</span>', 'port_ig': 'See everything on Instagram',
-                'port_img1': 'Nail Art', 'port_img2': 'Lashes', 'port_img3': 'Make-up',
-                'book_title': 'Book Your Treatment', 'book_p': 'Select your preferred date and time from our smart system.', 'book_avail': 'Available Times (Nov 3)', 'btn_confirm': 'Request Appointment', 'book_or': 'Or book via chat', 'btn_wa': 'WhatsApp Message',
+                'port_tag': 'Work Portfolio', 'port_title': 'Our <span class="text-brandPink italic">Creations</span>', 'port_img1': 'Nail Art', 'port_img2': 'Lashes', 'port_img3': 'Make-up',
                 'contact_title': 'Come visit us', 'contact_p': 'The indicated times may vary.', 'cont_addr': 'ADDRESS', 'cont_map': 'Open Full Map', 'cont_hours': 'HOURS',
                 'day_1': 'Monday', 'day_2_3': 'Tue - Wed', 'day_4_5': 'Thu - Fri', 'day_6': 'Saturday', 'day_7': 'Sunday', 'closed': 'Closed',
                 'pop_tag': 'Exclusive Promo', 'pop_title': 'Come Discover Us!', 'pop_p': 'Show this coupon in the store to receive a special treatment at your first appointment.', 'pop_old': 'Welcome Discount', 'pop_btn': 'Claim Discount via WhatsApp'
@@ -584,8 +475,11 @@
             const menu = document.getElementById('mobile-menu');
             if (!menu.classList.contains('hidden')) {
                 menu.classList.add('hidden');
-                document.querySelector('#mobile-menu-btn i').classList.remove('fa-xmark', 'rotate-90');
-                document.querySelector('#mobile-menu-btn i').classList.add('fa-bars');
+                const iconObj = document.querySelector('#mobile-menu-btn i');
+                if (iconObj) {
+                    iconObj.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
+                    iconObj.classList.add('fa-bars');
+                }
             }
 
             popup.classList.remove('opacity-0', 'invisible');
@@ -626,8 +520,10 @@
                 const iconObj = document.querySelector('#mobile-menu-btn i');
                 if (menuObj && !menuObj.classList.contains('hidden')) {
                     menuObj.classList.add('hidden');
-                    iconObj.classList.remove('fa-xmark', 'rotate-90');
-                    iconObj.classList.add('fa-bars');
+                    if (iconObj) {
+                        iconObj.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
+                        iconObj.classList.add('fa-bars');
+                    }
                 }
             }
 
@@ -643,11 +539,11 @@
                     menu.classList.toggle('hidden');
                     const icon = btn.querySelector('i');
                     if(menu.classList.contains('hidden')) {
-                        icon.classList.remove('fa-xmark', 'rotate-90');
+                        icon.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
                         icon.classList.add('fa-bars');
                     } else {
                         icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-xmark', 'rotate-90');
+                        icon.classList.add('fa-xmark', 'text-brandPink', 'rotate-90');
                     }
                 });
             }
@@ -658,8 +554,10 @@
                     const iconObj = document.querySelector('#mobile-menu-btn i');
                     if (menuObj && !menuObj.classList.contains('hidden')) {
                         menuObj.classList.add('hidden');
-                        iconObj.classList.remove('fa-xmark', 'rotate-90');
-                        iconObj.classList.add('fa-bars');
+                        if (iconObj) {
+                            iconObj.classList.remove('fa-xmark', 'text-brandPink', 'rotate-90');
+                            iconObj.classList.add('fa-bars');
+                        }
                     }
                 });
             });
